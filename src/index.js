@@ -1,17 +1,32 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
+
+
+const tick=()=>
+{
+  const elem=(
+    <div>
+      <h1>سلام دوستان</h1>
+      <h2>
+         it is {new Date().toLocaleTimeString()}
+      </h2>
+    </div>
+  )
+  const root = ReactDOM.createRoot(document.getElementById('root'));
+
+root.render( elem);
+
+}
+
+setInterval(() => {
+  tick();
+}, 1000);
+
+
+
+
+
+
