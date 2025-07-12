@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom/client';
+//import ReactDOM from 'react-dom/client';
 import './style.css'
  var interval;
+
 class Timer extends React.Component
 {
 
@@ -9,13 +10,12 @@ class Timer extends React.Component
     super();
     this.state={
       time: new Date().toLocaleTimeString()
-
+     
     }
   }
 
   componentDidMount(){
-    console.log("componentDidMount");
-   interval=  setInterval(() => {
+     interval=  setInterval(() => {
       this.setState({
        time: new Date().toLocaleTimeString()
       })
@@ -38,9 +38,13 @@ class Timer extends React.Component
     console.log("render");
 
     return(
-      <h2 className='timer'>
+     <div>
+       <h2 className='timer'>
           it is {this.state.time}
       </h2>
+      <button onClick={this.props.handelSetTitle}> Change </button>
+     </div>
+     
     );
   }
 
