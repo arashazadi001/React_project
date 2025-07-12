@@ -1,52 +1,79 @@
-import React, { Component } from 'react';
-//import ReactDOM from 'react-dom/client';
-import './style.css'
- var interval;
+import React from 'react';
+import './style.css';
 
-class Timer extends React.Component
-{
+let interval;
 
-  constructor(){
+class Timer extends React.Component {
+  constructor() {
     super();
-    this.state={
-      time: new Date().toLocaleTimeString()
-     
+    this.state = {
+      hour: 0,
+      minute: 0,
+      second: 0,
+      isStart: false
+    };
+  }
+
+  startInterval = () => {
+    if (!this.state.isStart) {
+      this.setState({ isStart: true });
+
+      interval = setInterval(() => {
+        this.setState((prevState) => {
+          let { hour, minute, second } = prevState;
+
+          second++;
+
+          if (second === 60) {
+            second = 0;
+            minute++;
+          }
+
+          if (minute === 60) {
+            minute = 0;
+            hour++;
+          }
+
+          return { second, minute, hour };
+        });
+      }, 1000);
     }
-  }
+  };
 
-  componentDidMount(){
-     interval=  setInterval(() => {
-      this.setState({
-       time: new Date().toLocaleTimeString()
-      })
-    }, 1000);
-  }
+  stopInterval = () => {
+    this.setState({ isStart: false });
+    clearInterval(interval);
+  };
 
-  componentDidUpdate (){
-    if(this.state.time == "10:45:30 AM")
-    {
-        clearInterval(interval);
-    }
+  resetInterval = () => {
+    clearInterval(interval);
+    this.setState({
+      hour: 0,
+      minute: 0,
+      second: 0,
+      isStart: false
+    });
+  };
 
-  }
+  render() {
+    const { hour, minute, second } = this.state;
 
+    return (
+      <>
+        <h2 className='timer'>
+          {`${hour.toString().padStart(2, '0')} : ${minute.toString().padStart(2, '0')} : ${second.toString().padStart(2, '0')}`}
+        </h2>
 
-  componentWillUnmount(){
-    console.log("componentWillUnmount");
-  }
-  render(){
-    console.log("render");
-
-    return(
-     <div>
-       <h2 className='timer'>
-          it is {this.state.time}
-      </h2>
-      <button onClick={this.props.handelSetTitle}> Change </button>
-     </div>
-     
+        <div className="button-group">
+          <button className="circle-button start-button" onClick={this.startInterval}>Start</button>
+          <button className="circle-button stop-button" onClick={this.stopInterval}>Stop</button>
+          <button className="circle-button reset-button" onClick={this.resetInterval}>Reset</button>
+        </div>
+      </>
     );
   }
-
 }
+
 export default Timer;
+
+

@@ -13,10 +13,10 @@ class App extends React.Component {
   constructor(){
     super();
     this.state= {
-      tiile : "سلام دوستان عزیزم"
+      title:"سلام دوستان عزیزم"
     }
   }
-  handelSetTitle=()=>{
+  handleSetTitle=()=>{
     this.setState({
       title:"به کد یاد خوش آمدید."
     })
@@ -25,9 +25,9 @@ class App extends React.Component {
   render() {
     return (
       <div className='main'>
-         <Hello title ={this.state.tiile}/>
-         <Timer title={this.handelSetTitle}/>
-         <Cornometr/>
+         <Hello title ={this.state.title}/>
+         <Timer x={this.handleSetTitle}/>
+
       </div>
     );
   }

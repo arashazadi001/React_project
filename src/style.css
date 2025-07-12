@@ -38,3 +38,42 @@
 
 
 }
+
+.h1 {
+  color: white;
+}
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.circle-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.circle-button:hover {
+  transform: scale(1.1);
+}
+
+.start-button {
+  background-color: #28a745; /* سبز */
+}
+
+.stop-button {
+  background-color: #dc3545; /* قرمز */
+}
+
+.reset-button {
+  background-color: #6c757d; /* خاکستری */
+}

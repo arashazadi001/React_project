@@ -11,36 +11,38 @@ class Cornometr extends Component {
     };
   }
 
-   componentDidMount(){
-    console.log("componentDidMount");
-   interval=  setInterval(() => {
-      this.setState({
-       counter: this.state.counter-1
-      })
-    }, 1000);
-  }
 
 
+startInterval=()=>{
+  interval= setInterval(() => {
+    this.setState({
+      counter: this.state.counter-1
+    })
+    
+  }, 1000);
+}
+
+
+stopInterval=()=>{
+ clearInterval(interval);
+}
+
+resetInteval=()=>{
+ 
+}
   
-  componentDidUpdate (){
-    if(this.state.counter == 0)
-    {
-        clearInterval(interval);
-    }
-
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.interval); // برای جلوگیری از memory leak
-  }
 
   render() {
     return (
-      <div className="cornometr">
-      <h2> Cornometr:
+      <>
+      <h2 className="cornometr">  Cornometr:
         {this.state.counter}
         </h2>
-      </div>
+
+
+      </>
+
+      
     );
   }
 }
