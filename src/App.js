@@ -35,18 +35,29 @@ import Cornometr from './Cornometr';
 
 
 
-const App=()=>{
-  const[title,settitle]=useState("سلام دوستان عزیزم")
-  const handleSetTitle=()=>{
-    settitle("به کد یاد خوش آمدید")
-  }
-  return(
-        <div className='main'>
-        <Hello title ={title}/>
-        <Timer handleSetTitle={handleSetTitle}/>
-        </div>
-  )
+const App = () => {
+  const [title, setTitle] = useState("سلام دوستان عزیزم");
+  const [isLight, setIsLight] = useState(false);
 
+  const handleSetLight = () => {
+    setIsLight(!isLight); // ✅ تغییر حالت روشن/تاریک
+   setTitle(isLight ? "سلام دوستان عزیزم" : "به کد یاد خوش آمدید."); // ✅ تغییر متن براساس حالت
+ };
+//const handleSetLight = () => {
+  //setIsLight(prev => {
+   // const newIsLight = !prev;
+   // setTitle(newIsLight ? "سلام دوستان عزیزم" : "به کد یاد خوش آمدید.");
+  //  return newIsLight;
+ // });
+//};
+
+  return (
+    <div className='main' style={{ background: isLight ? "white" : "black", color: isLight ? "black" : "white" }}>
+      <Hello title={title} color={isLight ? "black" : "white"} />
+      <Timer isLight={isLight}  handleSetLight={handleSetLight} />
+    </div>
+  );
 }
+
 
 export default App;
