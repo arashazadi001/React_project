@@ -58,11 +58,12 @@ class Timer extends React.Component {
     });
   };
   habdleSaveTime=()=>{
-    let h =this.state.hour
-    let m=this.state.minute
-    let s=this.state.second
-    let newTime= `${h > 9 ? h: "0"+h} : ${m > 9 ? m : "0"+m} : ${s > 9 ? s : "0"+s}`
-    this.props.setTimeArr([...this.props.timeArr , newTime])
+   // let h =this.state.hour
+    //let m=this.state.minute
+   // let s=this.state.second
+    //let newTime= `${h > 9 ? h: "0"+h} : ${m > 9 ? m : "0"+m} : ${s > 9 ? s : "0"+s}`
+    let newTime= document.querySelector('.timer').innerHTML;
+    this.context.setTimeArr([...this.context.timeArr , newTime])
   }
 
   render() {
@@ -70,7 +71,7 @@ class Timer extends React.Component {
 
     return (
       <>
-        <h2 className='timer' onClick={this.habdleSaveTime} style={{color:this.context}}>
+        <h2 className='timer' onClick={this.habdleSaveTime}>
           {`${hour.toString().padStart(2, '0')} : ${minute.toString().padStart(2, '0')} : ${second.toString().padStart(2, '0')}`}
         </h2>
 
@@ -87,9 +88,9 @@ class Timer extends React.Component {
             
             </button>
         </div>
-          <TimeList>
-           {this.props.timeArr}
-          </TimeList>
+        
+          
+         
       </>
     );
   }
