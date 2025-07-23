@@ -5,6 +5,7 @@ import Timer from './Timer';
 import './style.css';
 import Cornometr from './Cornometr';
 import TimeList from './TimeLis';
+import { testContext } from './testContext';
 
 const App = () => {
   const [title, setTitle] = useState("سلام دوستان عزیزم");
@@ -24,11 +25,13 @@ const App = () => {
   }, [isLight]);
 
   return (
+    <testContext.Provider value="white">
     <div className='main' style={{ background: isLight ? "white" : "black", color: isLight ? "black" : "white" }}>
       <Hello title={title} color={isLight ? "black" : "white"} />
       <Timer timeArr={timeArr} setTimeArr={setTimeArr} isLight={isLight} handleSetLight={handleSetLight} />
     
     </div>
+    </testContext.Provider>
   );
 };
 

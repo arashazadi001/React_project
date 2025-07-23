@@ -1,6 +1,7 @@
 import React from 'react';
 import './style.css';
 import TimeList from './TimeLis';
+import { testContext } from './testContext';
 
 let interval;
 
@@ -40,6 +41,7 @@ class Timer extends React.Component {
       }, 1000);
     }
   };
+  static contextType=testContext;
 
   stopInterval = () => {
     this.setState({ isStart: false });
@@ -68,7 +70,7 @@ class Timer extends React.Component {
 
     return (
       <>
-        <h2 className='timer' onClick={this.habdleSaveTime}>
+        <h2 className='timer' onClick={this.habdleSaveTime} style={{color:this.context}}>
           {`${hour.toString().padStart(2, '0')} : ${minute.toString().padStart(2, '0')} : ${second.toString().padStart(2, '0')}`}
         </h2>
 

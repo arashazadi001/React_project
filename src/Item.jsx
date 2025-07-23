@@ -1,6 +1,10 @@
+import { useContext } from "react";
+import { testContext } from "./testContext";
+
 const Item=(props)=>{
+    const context=useContext(testContext);
     return (
-        <div>{props.children} </div>
+        <div style={{color:context}}>{props.children} </div>
     )
 
 }
